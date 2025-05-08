@@ -14,6 +14,5 @@ type User struct {
 	Email       string          `gorm:"unique"`
 	Role        enums.UserRoles `gorm:"type:role;default:'buyer'"`
 	Age         uint8
-	Location    string
 	ActivatedAt sql.NullTime
 }

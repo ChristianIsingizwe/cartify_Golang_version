@@ -6,4 +6,10 @@ type RegisterRequest struct {
 	Email     string `json:"email" validate:"required,email"`
 	Password  string `json:"password" validate:"required,min=8,max=40"`
 	Age       uint8  `json:"age" validate:"required,min=18,max=130"`
+	Role      string `json:"role" validate:"omitempty,oneof=seller buyer admin"`
+}
+
+type LoginRequest struct {
+	Email    string `json:"email" validate:"required,email"`
+	Password string `json:"password" validate:"required,min=8,max=40"`
 }
