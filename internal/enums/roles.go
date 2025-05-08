@@ -16,7 +16,7 @@ const (
 func (r *UserRoles) Scan(value interface{}) error {
 	b, ok := value.([]byte)
 	if !ok {
-		return fmt.Errorf("Failed to scan role: %T", value)
+		return fmt.Errorf("failed to scan role: %T", value)
 	}
 	*r = UserRoles(string(b))
 	return nil
