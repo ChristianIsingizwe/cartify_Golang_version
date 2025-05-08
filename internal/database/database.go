@@ -2,12 +2,12 @@ package database
 
 import (
 	"fmt"
+	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"log"
 	"os"
 )
 
-func connectToDatabase() {
+func connectToDatabase() (*gorm.DB, error) {
 	host := os.Getenv("DB_HOST")
 	port := os.Getenv("DB_PORT")
 	user := os.Getenv("DB_USER")
@@ -19,6 +19,7 @@ func connectToDatabase() {
 
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
-		log.Fatal("Failed to connect to database", err)
+		return nil, err
 	}
+	return db, nil
 }
