@@ -1,6 +1,7 @@
 package models
 
 import (
+	"carto/internal/enums"
 	"database/sql"
 	"gorm.io/gorm"
 )
@@ -10,7 +11,8 @@ type User struct {
 
 	FirstName   string
 	LastName    string
-	Email       string
+	Email       string          `gorm:"unique"`
+	Role        enums.UserRoles `gorm:"type:role;default:'buyer'"`
 	Age         uint8
 	Location    string
 	ActivatedAt sql.NullTime
